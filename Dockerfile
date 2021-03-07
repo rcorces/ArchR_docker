@@ -1,4 +1,5 @@
 FROM ubuntu:xenial
+
 # Install system dependencies for R
 RUN apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -8,7 +9,7 @@ RUN apt-get update -qq && \
     gfortran \
     libatlas-base-dev \
     libbz2-dev \
-    libcairo2 \
+    libcairo2-dev \
     libcurl4-openssl-dev \
     libicu-dev \
     liblzma-dev \
@@ -32,12 +33,22 @@ RUN apt-get install -y \
     pandoc
     libxml2-dev
     
-ARG R_VERSION=4.0.3
-RUN wget https://cdn.rstudio.com/r/ubuntu-1604/pkgs/r-${R_VERSION}_1_amd64.deb
-RUN apt-get install -y gdebi-core
-RUN gdebi r-${R_VERSION}_1_amd64.deb
+# Install Python
+FROM python:3.9.2-buster
 
-# pull in a manifest file and restore it
+# Install Python packages
+RUN pip install MACS2
+
+# Install GSL
+RUN wget https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
+RUN tar -zxvf gsl-2.6.tar.gz; cd gsl-2.6; ./configure && make && make install
+
+# Install R
+ARG R_VERSION=4.0.3
+FROM r-base:${R_VERSION}
+
+# Install R packages
+# pull in an renv manifest file and restore it to load pacakges
 COPY renv.lock ./
 RUN R -e 'renv::restore()'
 
