@@ -63,7 +63,7 @@ FROM r-base:${R_VERSION}
 
 # Install R packages
 # pull in an renv manifest file and restore it to load pacakges
-COPY renv.lock ./
-RUN R -e 'renv::restore()'
+#COPY renv.lock ./
+#RUN R -e 'renv::restore()'
 
     
