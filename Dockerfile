@@ -21,10 +21,24 @@ RUN apt-get update -qq && \
     libtk8.6 \
     libx11-6 \
     libxt6 \
+    libxt-dev \
     locales \
     tzdata \
-    zlib1g-dev
-    
+    libglib2.0-dev \
+    zlib1g-dev \
+    meson \
+    pkg-config \
+    gtk-doc-tools \
+    libfreetype6-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libjpeg-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libbz2-dev \
+    libgsl0-dev \
+    gsl-bin
+        
 # Install system dependencies for the tidyverse R packages
 RUN apt-get install -y \
     make
@@ -40,8 +54,8 @@ FROM python:3.9.2-buster
 RUN pip install MACS2
 
 # Install GSL
-RUN wget https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
-RUN tar -zxvf gsl-2.6.tar.gz; cd gsl-2.6; ./configure && make && make install
+#RUN wget https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
+#RUN tar -zxvf gsl-2.6.tar.gz; cd gsl-2.6; ./configure && make && make install
 
 # Install R
 ARG R_VERSION=4.0.3
