@@ -1489,6 +1489,11 @@
       "Repository": "CRAN",
       "Hash": "b34a8bb69005168078d1d546a53912b2"
     },
+     "rhandsontable": {
+      "Package": "rhandsontable",
+      "Version": "0.3.8",
+      "Source": "Repository"
+    },
     "rhdf5": {
       "Package": "rhdf5",
       "Version": "2.38.0",
@@ -1629,6 +1634,11 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "00344c227c7bd0ab5d78052c5d736c44"
+    },
+    "shinythemes": {
+      "Package": "shinythemes",
+      "Version": "1.2.0",
+      "Source": "Repository"
     },
     "sitmo": {
       "Package": "sitmo",
