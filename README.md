@@ -1,4 +1,7 @@
 # ArchR_docker
+
+__THIS IS NOT MEANT FOR PUBLIC USE YET. This repository is pre-release and is not intended for external use but has been made public for various internal reasons. Thanks for your patience!__
+
 To build the singularity container:
 Set your working directory to this github repository and run:
 
